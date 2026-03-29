@@ -1,0 +1,174 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1c1c1c;
+  --border: #2a2a2a;
+  --accent: #00e5a0;
+  --accent-dim: rgba(0,229,160,0.1);
+  --red: #ff4d4d;
+  --red-dim: rgba(255,77,77,0.1);
+  --text: #f0f0f0;
+  --muted: #888;
+  --font: 'Courier New', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+.app { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+.last-updated { color: var(--muted); font-size: 12px; }
+
+/* Stats Bar */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.coin-icon { width: 24px; height: 24px; border-radius: 50%; }
+.coin-name { font-weight: bold; color: var(--text); }
+.coin-symbol { color: var(--muted); font-size: 11px; margin-left: auto; }
+.coin-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.coin-change {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.coin-change.positive { color: var(--accent); background: var(--accent-dim); }
+.coin-change.negative { color: var(--red); background: var(--red-dim); }
+
+/* Chart */
+.chart-section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.chart-header h2 { font-size: 16px; color: var(--text); }
+.coin-selector { display: flex; gap: 8px; }
+.selector-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.selector-btn:hover { border-color: var(--accent); color: var(--text); }
+.selector-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.chart-container { position: relative; height: 300px; }
+
+/* Table */
+.table-section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.table-section h2 { font-size: 16px; margin-bottom: 16px; }
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead tr { border-bottom: 1px solid var(--border); }
+th {
+  text-align: left;
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: normal;
+}
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--bg3); }
+td.positive { color: var(--accent); }
+td.negative { color: var(--red); }
+td.loading { text-align: center; color: var(--muted); padding: 32px; }
+.coin-cell { display: flex; align-items: center; gap: 10px; }
+.coin-cell img { width: 20px; height: 20px; border-radius: 50%; }
+.coin-cell .symbol { color: var(--muted); font-size: 11px; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+/* Skeleton loading animation */
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.loading { animation: pulse 1.5s infinite; }

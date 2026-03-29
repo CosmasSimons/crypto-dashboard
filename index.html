@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Dashboard</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header>
+      <div class="logo">⬡ CryptoPulse</div>
+      <div class="last-updated">Last updated: <span id="update-time">--</span></div>
+    </header>
+
+    <!-- Hero Stats Bar -->
+    <section class="stats-bar" id="stats-bar">
+      <div class="stat-card" id="card-bitcoin">
+        <div class="coin-header">
+          <img class="coin-icon" id="icon-bitcoin" src="" alt="BTC"/>
+          <span class="coin-name">Bitcoin</span>
+          <span class="coin-symbol">BTC</span>
+        </div>
+        <div class="coin-price" id="price-bitcoin">$--</div>
+        <div class="coin-change" id="change-bitcoin">--</div>
+      </div>
+      <div class="stat-card" id="card-ethereum">
+        <div class="coin-header">
+          <img class="coin-icon" id="icon-ethereum" src="" alt="ETH"/>
+          <span class="coin-name">Ethereum</span>
+          <span class="coin-symbol">ETH</span>
+        </div>
+        <div class="coin-price" id="price-ethereum">$--</div>
+        <div class="coin-change" id="change-ethereum">--</div>
+      </div>
+      <div class="stat-card" id="card-solana">
+        <div class="coin-header">
+          <img class="coin-icon" id="icon-solana" src="" alt="SOL"/>
+          <span class="coin-name">Solana</span>
+          <span class="coin-symbol">SOL</span>
+        </div>
+        <div class="coin-price" id="price-solana">$--</div>
+        <div class="coin-change" id="change-solana">--</div>
+      </div>
+      <div class="stat-card" id="card-cardano">
+        <div class="coin-header">
+          <img class="coin-icon" id="icon-cardano" src="" alt="ADA"/>
+          <span class="coin-name">Cardano</span>
+          <span class="coin-symbol">ADA</span>
+        </div>
+        <div class="coin-price" id="price-cardano">$--</div>
+        <div class="coin-change" id="change-cardano">--</div>
+      </div>
+    </section>
+
+    <!-- Chart + Selector -->
+    <section class="chart-section">
+      <div class="chart-header">
+        <h2>7-Day Price Chart</h2>
+        <div class="coin-selector">
+          <button class="selector-btn active" data-coin="bitcoin">BTC</button>
+          <button class="selector-btn" data-coin="ethereum">ETH</button>
+          <button class="selector-btn" data-coin="solana">SOL</button>
+          <button class="selector-btn" data-coin="cardano">ADA</button>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="priceChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Market Table -->
+    <section class="table-section">
+      <h2>Market Overview</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Coin</th>
+              <th>Price</th>
+              <th>24h Change</th>
+              <th>Market Cap</th>
+              <th>Volume (24h)</th>
+            </tr>
+          </thead>
+          <tbody id="market-table-body">
+            <tr><td colspan="6" class="loading">Loading market data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p>Data from <a href="https://coingecko.com" target="_blank">CoinGecko</a> · Built by CosmasSimons</p>
+    </footer>
+
+  </div>
+  <script src="src/app.js"></script>
+</body>
+</html>
